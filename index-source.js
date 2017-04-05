@@ -153,6 +153,7 @@ RedaxtorBundle.defaultApi = RedaxtorDefaultApi;
 /**
  * Starts Redaxor in window scope, starts default SpiralScout API on urls provided and attaches a seo module with custom header html
  * @param {Object} urls
+ * @param {string} urls.getPieceUrl url to get piece data for dynamic pieces
  * @param {string} urls.savePieceUrl url to save piece data
  * @param {string} urls.saveMetaUrl url to save SEO piece data
  * @param {string} urls.imageGalleryUrl url to get image list
@@ -183,7 +184,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
                 return new Promise(function (resolve, reject) {
                     var data = piece.dataset;
                     data.data = piece.data;
-                    fetchApi.post(urls.savePieceUrl, JSON.stringify(data)).then(
+                    fetchApi.post(urls.getPieceUrl, JSON.stringify(data)).then(
                         (resp) => {
                             resp.piece.data.updateNode = false; // Force non updates of node
                             piece.data = resp.piece.data;
