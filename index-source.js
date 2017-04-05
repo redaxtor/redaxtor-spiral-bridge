@@ -164,9 +164,6 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
     if (window.redaxtor) {
         throw new Error("Seems Redaxtor is already started");
     }
-    if (!window.sf) {
-        throw new Error("Spiral-specific Redaxtor implementation requires spiral core in window root");
-    }
 
     const fetchApi = require('./fetch-api');
 
