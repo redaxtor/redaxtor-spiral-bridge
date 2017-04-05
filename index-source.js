@@ -176,7 +176,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
          */
         getPieceData: function (piece) {
             if (!piece.dataset['nonupdateable']) {
-                return Redaxtor.defaultApi.getPieceData(piece);
+                return RedaxtorDefaultApi.getPieceData(piece);
             } else {
                 return new Promise(function (resolve, reject) {
                     var data = piece.dataset;
