@@ -288,6 +288,8 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
     });
 
     window.redaxtor = redaxtor;
+
+    return redaxtor;
 };
 
 module.exports = RedaxtorBundle;
