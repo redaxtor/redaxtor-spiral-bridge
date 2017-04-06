@@ -35,6 +35,7 @@ class RedaxtorBundle extends Redaxtor {
             let div = document.createElement('div');
             div.innerHTML = "Edit SEO Meta";
             div.className = "edit-seo-div";
+            div.style.display = 'none';
             this.addPiece(div, {
                 id: "seo",
                 name: "Edit SEO",
