@@ -3,7 +3,7 @@
 Include `redaxtor.min.js` in your project. I.e. `/node_modules/redaxtor-spiral-bridge/redaxtor.min.js`
 For development purposes incluse map file as well, i.e. `/node_modules/redaxtor-spiral-bridge/redaxtor.min.js`
 
-See `index.php` for typical spiral framework PHP usage sample.
+See [`index.php`](./index.php) for typical Spiral Framework PHP usage sample.
 
 
 ### Node dependency usage in `package.json`
@@ -16,13 +16,13 @@ See `index.php` for typical spiral framework PHP usage sample.
     }
 ````
 
-### Updating
+### Updating during development
 
 1. Install node
 2. Update git submodules
 3. Run `npm install` and `npm build`
 
 
-### Publishing
+### Publishing during development
 
 1. Run `npm publish`

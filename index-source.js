@@ -153,12 +153,17 @@ RedaxtorBundle.defaultApi = RedaxtorDefaultApi;
 /**
  * Starts Redaxor in window scope, starts default SpiralScout API on urls provided and attaches a seo module with custom header html
  * @param {Object} urls
- * @param {string} urls.getPieceUrl url to get piece data for dynamic pieces
- * @param {string} urls.savePieceUrl url to save piece data
+ * @param {string} urls.getPieceUrl url to get piece data for dynamic pieces.
+ * This may be overrided for specific piece by setting `get-url` in piece user dataset.
+ * I.e. in DOM node `data-get-url` attribute or manually in appPiece method)
+ * @param {string} urls.savePieceUrl url to save piece data.
+ * This may be overrided for specific piece by setting `save-url` in piece user dataset.
+ * I.e. in DOM node `data-save-url` attribute or manually in appPiece method
  * @param {string} urls.saveMetaUrl url to save SEO piece data
  * @param {string} urls.imageGalleryUrl url to get image list
  * @param {string} urls.uploadUrl url upload images
  * @param {string} seoHtml
+ * @return {Redaxtor}
  */
 RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
     if (window.redaxtor) {
@@ -181,7 +186,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
                 return new Promise(function (resolve, reject) {
                     var data = piece.dataset;
                     data.data = piece.data;
-                    fetchApi.post(urls.getPieceUrl, JSON.stringify(data)).then(
+                    fetchApi.post(piece.dataset['get-url'] || urls.getPieceUrl, JSON.stringify(data)).then(
                         (resp) => {
                             resp.piece.data.updateNode = false; // Force non updates of node
                             piece.data = resp.piece.data;
@@ -205,10 +210,12 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
                 if (piece.type == 'seo') {
                     var metadata = piece.data;
 
-                    // TODO: wtf is that?
-                    metadata.namespace = window.metadata.namespace;
-                    metadata.view = window.metadata.view;
-                    metadata.code = window.metadata.code;
+                    if(window.metadata) {
+                        // TODO: wtf is that?
+                        metadata.namespace = window.metadata.namespace;
+                        metadata.view = window.metadata.view;
+                        metadata.code = window.metadata.code;
+                    }
 
                     fetchApi.post(urls.saveMetaUrl, JSON.stringify(metadata)).then((d) => {
                         resolve();
@@ -216,7 +223,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
                         reject(error);
                     });
                 } else {
-                    fetchApi.post(urls.savePieceUrl, JSON.stringify(data)).then((d) => {
+                    fetchApi.post(piece.dataset['save-url'] || urls.savePieceUrl, JSON.stringify(data)).then((d) => {
                         resolve();
                     }, (error)=> {
                         reject(error);
@@ -282,7 +289,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
     });
 
     redaxtor.attachSeo({
-        html: seoHtml || window.metadata.html
+        html: seoHtml || (window.metadata && window.metadata.html)
     });
 
     window.redaxtor = redaxtor;
