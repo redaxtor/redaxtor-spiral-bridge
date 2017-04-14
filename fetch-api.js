@@ -1,4 +1,4 @@
-const fetch = require('whatwg-fetch');
+require('whatwg-fetch');
 
 /**
  * check status of response
@@ -9,7 +9,7 @@ function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
         return response;
     } else {
-        let error = new ResponseError(response.statusText);
+        let error = new Error(response.statusText);
         error.response = response;
         throw error;
     }
