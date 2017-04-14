@@ -1,6 +1,7 @@
 {
-  "name": "redaxtor-spiral-bridge",
-  "version": "1.0.0",
+  "name": "writeaway-spiral-bridge",
+  "private": true,
+  "version": "1.0.1",
   "description": "",
   "main": "./writeaway.min.js",
   "repository": "git@github.com:writeaway/writeaway-spiral-bridge.git",
