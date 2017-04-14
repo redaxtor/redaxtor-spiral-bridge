@@ -1,12 +1,12 @@
 [submodule "submodules/redaxtor"]
 	path = submodules/redaxtor
-	url = git@github.com:redaxtor/redaxtor.git
+	url = git@github.com:writeaway/writeaway.git
 [submodule "submodules/redaxtor-medium"]
 	path = submodules/redaxtor-medium
-	url = git@github.com:redaxtor/redaxtor-medium.git
+	url = git@github.com:writeaway/writeaway-medium.git
 [submodule "submodules/redaxtor-seo"]
 	path = submodules/redaxtor-seo
-	url = git@github.com:redaxtor/redaxtor-seo.git
+	url = git@github.com:writeaway/writeaway-seo.git
 [submodule "submodules/redaxtor-codemirror"]
 	path = submodules/redaxtor-codemirror
-	url = git@github.com:redaxtor/redaxtor-codemirror.git
+	url = git@github.com:writeaway/writeaway-codemirror.git

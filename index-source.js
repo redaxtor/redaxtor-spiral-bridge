@@ -167,7 +167,7 @@ RedaxtorBundle.defaultApi = RedaxtorDefaultApi;
  * @return {Redaxtor}
  */
 RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
-    if (window.redaxtor) {
+    if (window.writeaway) {
         throw new Error("Seems Redaxtor is already started");
     }
 
@@ -284,18 +284,18 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
         }
     };
 
-    let redaxtor = new RedaxtorBundle({
+    let writeaway = new RedaxtorBundle({
         pieces: {},
         api: spiralApi
     });
 
-    redaxtor.attachSeo({
+    writeaway.attachSeo({
         html: seoHtml || (window.metadata && window.metadata.html)
     });
 
-    window.redaxtor = redaxtor;
+    window.writeaway = writeaway;
 
-    return redaxtor;
+    return writeaway;
 };
 
 module.exports = RedaxtorBundle;

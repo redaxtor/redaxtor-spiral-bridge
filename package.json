@@ -2,13 +2,13 @@
   "name": "redaxtor-spiral-bridge",
   "version": "1.0.0",
   "description": "",
-  "main": "./redaxtor.min.js",
-  "repository": "git@github.com:redaxtor/redaxtor-spiral-bridge.git",
+  "main": "./writeaway.min.js",
+  "repository": "git@github.com:writeaway/writeaway-spiral-bridge.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build:umd:min",
-    "build:umd": "cross-env NODE_ENV=development webpack ./index-source.js ./redaxtor.js --display-error-details",
-    "build:umd:min": "cross-env NODE_ENV=production webpack ./index-source.js ./redaxtor.min.js"
+    "build:umd": "cross-env NODE_ENV=development webpack ./index-source.js ./writeaway.js --display-error-details",
+    "build:umd:min": "cross-env NODE_ENV=production webpack ./index-source.js ./writeaway.min.js"
   },
   "author": "",
   "license": "MIT",

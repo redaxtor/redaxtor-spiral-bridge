@@ -1,7 +1,7 @@
 ### Usage
 
-Include `redaxtor.min.js` in your project. I.e. `/node_modules/redaxtor-spiral-bridge/redaxtor.min.js`
-For development purposes incluse map file as well, i.e. `/node_modules/redaxtor-spiral-bridge/redaxtor.min.js`
+Include `redaxtor.min.js` in your project. I.e. `/node_modules/writeaway-spiral-bridge/writeaway.min.js`
+For development purposes incluse map file as well, i.e. `/node_modules/writeaway-spiral-bridge/writeaway.min.js.map`
 
 See [`index.php`](./index.php) for typical Spiral Framework PHP usage sample.
 
@@ -11,7 +11,7 @@ See [`index.php`](./index.php) for typical Spiral Framework PHP usage sample.
 ````json
     {
         "dependencies": {
-            "redaxtor-spiral-bridge": "git@github.com:redaxtor/redaxtor-spiral-bridge.git#master"
+            "writeaway-spiral-bridge": "git@github.com:writeaway/writeaway-spiral-bridge.git#master"
         }
     }
 ````
