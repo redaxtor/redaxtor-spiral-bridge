@@ -187,7 +187,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
                 return new Promise(function (resolve, reject) {
                     var data = piece.dataset;
                     data.data = piece.data;
-                    fetchApi.post(piece.dataset['get-url'] || urls.getPieceUrl, JSON.stringify(data)).then(
+                    fetchApi.post(piece.dataset['get-url'] || urls.getPieceUrl, data).then(
                         (resp) => {
                             resp.piece.data.updateNode = false; // Force non updates of node
                             piece.data = resp.piece.data;
@@ -218,13 +218,13 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
                         metadata.code = window.metadata.code;
                     }
 
-                    fetchApi.post(urls.saveMetaUrl, JSON.stringify(metadata)).then((d) => {
+                    fetchApi.post(urls.saveMetaUrl, metadata).then((d) => {
                         resolve();
                     }, (error)=> {
                         reject(error);
                     });
                 } else {
-                    fetchApi.post(piece.dataset['save-url'] || urls.savePieceUrl, JSON.stringify(data)).then((d) => {
+                    fetchApi.post(piece.dataset['save-url'] || urls.savePieceUrl, data).then((d) => {
                         resolve();
                     }, (error)=> {
                         reject(error);
