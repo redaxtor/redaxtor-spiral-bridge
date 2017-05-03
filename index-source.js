@@ -240,13 +240,13 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
         getImageList: function () {
             return new Promise(function (resolve, reject) {
                 fetchApi.get(urls.imageGalleryUrl).then((data)=> {
-                    resolve(data.map((image)=> {
+                    resolve((data.list || data).map((image)=> {
                         let thumb = image.thumbnail_uri;
                         if ('' == thumb) {
                             thumb = image.uri;
                         }
                         return {
-                            "url": image.compressed_uri,
+                            "url": image.uri,
                             "thumbnailUrl": thumb
                             // "width": 592,
                             // "height": 400
@@ -297,5 +297,9 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
 
     return writeaway;
 };
+
+if (!window.WriteawayBridge) {
+   window.WriteAwayBridge = RedaxtorBundle;
+}
 
 module.exports = RedaxtorBundle;
