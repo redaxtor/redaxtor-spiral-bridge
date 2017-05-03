@@ -298,7 +298,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
     return writeaway;
 };
 
-if (!window.WriteawayBridge) {
+if (!window.WriteAwayBridge) {
    window.WriteAwayBridge = RedaxtorBundle;
 }
 
