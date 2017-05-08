@@ -164,9 +164,10 @@ RedaxtorBundle.defaultApi = RedaxtorDefaultApi;
  * @param {string} urls.imageGalleryUrl url to get image list
  * @param {string} urls.uploadUrl url upload images
  * @param {string} seoHtml
+ * @param {*} options - init options to override for WA
  * @return {Redaxtor}
  */
-RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
+RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
     if (window.writeaway) {
         throw new Error("Seems Redaxtor is already started");
     }
@@ -286,6 +287,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml) {
 
     let writeaway = new RedaxtorBundle({
         pieces: {},
+        options: options || {},
         api: spiralApi
     });
 
