@@ -1,9 +1,9 @@
 <?php if (spiral(\Spiral\Pieces\Pieces::class)->canEdit()): ?>
     <script>
         /**
-         * RedaxtorBridge variable is put in global scope in application entry point by front end engineer
+         * WriteAwayBridge variable is put in global scope in application entry point by front end engineer
          */
-        RedaxtorBridge.startForSpiral({
+        WriteAwayBridge.startForSpiral({
             imageGalleryUrl: "<?= uri('api_images_list') ?>", // Url to fetch images list
             getPieceUrl: "<?= uri('api_pieces', ['action' => 'get']) ?>", // Url to fetch piece data. This is fired only for pieces that can't be read directly from DOM
             saveMetaUrl: "<?= uri('api_seo', ['action' => 'save']) ?>", // Url to save SEO data from SEO editor
