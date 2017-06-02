@@ -192,7 +192,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
                 return new Promise(function (resolve, reject) {
                     var data = piece.dataset;
                     data.data = piece.data;
-                    fetchApi.post(piece.dataset['get-url'] || urls.getPieceUrl, data).then(
+                    fetchApi.post(piece.dataset['getUrl'] || urls.getPieceUrl, data).then(
                         (resp) => {
                             resp.piece.data.updateNode = false; // Force non updates of node
                             piece.data = resp.piece.data;
@@ -223,13 +223,13 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
                         metadata.code = window.metadata.code;
                     }
 
-                    fetchApi.post(piece.dataset['save-url'] || urls.saveMetaUrl, metadata).then((d) => {
+                    fetchApi.post(piece.dataset['saveUrl'] || urls.saveMetaUrl, metadata).then((d) => {
                         resolve();
                     }, (error)=> {
                         reject(error);
                     });
                 } else {
-                    fetchApi.post(piece.dataset['save-url'] || urls.savePieceUrl, data).then((d) => {
+                    fetchApi.post(piece.dataset['saveUrl'] || urls.savePieceUrl, data).then((d) => {
                         resolve();
                     }, (error)=> {
                         reject(error);
