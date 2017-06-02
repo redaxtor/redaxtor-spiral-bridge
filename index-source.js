@@ -33,6 +33,10 @@ class RedaxtorBundle extends Redaxtor {
     attachSeo(data) {
         setTimeout(() => {
             let div = document.createElement('div');
+            if(data && data['meta-save-url']) {
+                div.setAttribute('data-save-url', data['meta-save-url']);
+                delete data['meta-save-url'];
+            }
             div.innerHTML = "Edit SEO Meta";
             div.className = "edit-seo-div";
             div.style.display = 'none';
@@ -219,7 +223,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
                         metadata.code = window.metadata.code;
                     }
 
-                    fetchApi.post(urls.saveMetaUrl, metadata).then((d) => {
+                    fetchApi.post(piece.dataset['save-url'] || urls.saveMetaUrl, metadata).then((d) => {
                         resolve();
                     }, (error)=> {
                         reject(error);
