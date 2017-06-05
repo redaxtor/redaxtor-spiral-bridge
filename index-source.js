@@ -279,15 +279,15 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
             return new Promise(function (resolve, reject) {
                 // formData is FormData with image field. Add rest to formData if needed and submit.
                 fetchApi.postFile(urls.uploadUrl, formData).then((data)=> {
-                    var thumb = data.image.thumbnail_uri;
+                    var thumb = data.thumbnailUrl;
                     if ('' == thumb) {
-                        thumb = data.image.uri;
+                        thumb = data.url;
                     }
                     resolve({
-                        "url": data.image.compressed_uri,
-                        "thumbnailUrl": thumb
-                        //  "width": 592,
-                        //  "height": 400
+                        "url": data.url,
+                        "thumbnailUrl": thumb,
+                        "width": data.width,
+                        "height": data.height
                     });
                 }, (error)=> {
                     reject(error);
