@@ -43,7 +43,7 @@ export function post(path, data) {
  * @return {Promise<TResult>}
  */
 export function postFile(path, data) {
-    return fetch(BASE_URL + path, {
+    return fetch(path, {
         method: 'post',
         credentials: 'same-origin',
         headers: {
