@@ -253,15 +253,16 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
             return new Promise(function (resolve, reject) {
                 fetchApi.get(urls.imageGalleryUrl).then((data)=> {
                     resolve((data.list || data).map((image)=> {
-                        let thumb = image.thumbnail_uri;
+                        let thumb = image.thumbnailUrl;
                         if ('' == thumb) {
-                            thumb = image.uri;
+                            thumb = image.url;
                         }
+
                         return {
-                            "url": image.uri,
-                            "thumbnailUrl": thumb
-                            // "width": 592,
-                            // "height": 400
+                            "url": image.url,
+                            "thumbnailUrl": thumb,
+                            "width": image.width,
+                            "height": image.height
                         };
                     }));
                 }, (error)=> {
