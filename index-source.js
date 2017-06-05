@@ -253,13 +253,13 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
             return new Promise(function (resolve, reject) {
                 fetchApi.get(urls.imageGalleryUrl).then((data)=> {
                     resolve((data.list || data).map((image)=> {
-                        let thumb = image.thumbnailUrl;
+                        let thumb = image.thumbnailUrl || image.thumbnail_uri;
                         if ('' == thumb) {
-                            thumb = image.url;
+                            thumb = image.url || image.uri;
                         }
 
                         return {
-                            "url": image.url,
+                            "url": image.url || image.uri,
                             "thumbnailUrl": thumb,
                             "width": image.width,
                             "height": image.height
@@ -280,12 +280,13 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
             return new Promise(function (resolve, reject) {
                 // formData is FormData with image field. Add rest to formData if needed and submit.
                 fetchApi.postFile(urls.uploadUrl, formData).then((data)=> {
-                    var thumb = data.thumbnailUrl;
+                    var data = data.image || data.data || data;
+                    var thumb = data.thumbnailUrl || data.thumbnail_uri;
                     if ('' == thumb) {
-                        thumb = data.url;
+                        thumb = data.url || data.uri;
                     }
                     resolve({
-                        "url": data.url,
+                        "url": data.url || data.uri,
                         "thumbnailUrl": thumb,
                         "width": data.width,
                         "height": data.height
