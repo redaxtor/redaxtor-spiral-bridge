@@ -34,12 +34,12 @@ class RedaxtorBundle extends Redaxtor {
         setTimeout(() => {
             let div = document.createElement('div');
 
-            if(window.metadata['meta-save-url']) {
+            if (window.metadata['meta-save-url']) {
                 div.setAttribute('data-save-url', window.metadata['meta-save-url']);
                 delete window.metadata['meta-save-url'];
             }
 
-            if(data && data['meta-save-url']) {
+            if (data && data['meta-save-url']) {
                 div.setAttribute('data-save-url', data['meta-save-url']);
                 delete data['meta-save-url'];
             }
@@ -111,8 +111,8 @@ class RedaxtorBundle extends Redaxtor {
 
         let updatedCookie = name + "=" + value;
 
-        for(let propName in options) {
-            if(options.hasOwnProperty(propName)) {
+        for (let propName in options) {
+            if (options.hasOwnProperty(propName)) {
                 updatedCookie += "; " + propName;
                 let propValue = options[propName];
                 if (propValue !== true) {
@@ -223,7 +223,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
                 if (piece.type == 'seo') {
                     var metadata = piece.data;
 
-                    if(window.metadata) {
+                    if (window.metadata) {
                         // TODO: wtf is that?
                         metadata.namespace = window.metadata.namespace;
                         metadata.view = window.metadata.view;
@@ -259,6 +259,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
                         }
 
                         return {
+                            "id": image.id || image.url || image.uri,
                             "url": image.url || image.uri,
                             "thumbnailUrl": thumb,
                             "width": image.width,
@@ -286,6 +287,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
                         thumb = data.url || data.uri;
                     }
                     resolve({
+                        "id": data.id || data.url || data.uri,
                         "url": data.url || data.uri,
                         "thumbnailUrl": thumb,
                         "width": data.width,
@@ -295,7 +297,25 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
                     reject(error);
                 });
             });
-        }
+        },
+
+        /**
+         * Delete image
+         * @param {string} id id or url of image
+         * @return {Promise<IRedaxtorResource>}
+         */
+        deleteImage: urls.deleteImageUrl ? function (id) {
+            return new Promise(function (resolve, reject) {
+                // formData is FormData with image field. Add rest to formData if needed and submit.
+                fetchApi.post(urls.deleteImageUrl, {id: id}).then((data)=> {
+                    resolve({
+                        "id": data.id || data.url || data.uri
+                    });
+                }, (error)=> {
+                    reject(error);
+                });
+            });
+        } : (void 0)
     };
 
     let writeaway = new RedaxtorBundle({
@@ -314,7 +334,7 @@ RedaxtorBundle.startForSpiral = function (urls, seoHtml, options) {
 };
 
 if (!window.WriteAwayBridge) {
-   window.WriteAwayBridge = RedaxtorBundle;
+    window.WriteAwayBridge = RedaxtorBundle;
 }
 
 module.exports = RedaxtorBundle;
