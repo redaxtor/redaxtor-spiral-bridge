@@ -85,6 +85,9 @@ class RedaxtorBundle extends Redaxtor {
         if (options.navBarCollapsed == undefined || options.navBarCollapsed == null) {
             this.setNavBarCollapsed(RedaxtorBundle.getCookie('r_navBarCollapsed') == 'true');
         }
+        if (options.expert == undefined || options.expert == null) {
+            this.setExpertMode(RedaxtorBundle.getCookie('r_expert') == 'true');
+        }
 
         this.onUnload = this.beforeUnload.bind(this);
         window.addEventListener("beforeunload", this.onUnload);
@@ -97,6 +100,7 @@ class RedaxtorBundle extends Redaxtor {
     beforeUnload(event) {
         RedaxtorBundle.setCookie('r_editorActive', this.isEditorActive());
         RedaxtorBundle.setCookie('r_navBarCollapsed', this.isNavBarCollapsed());
+        RedaxtorBundle.setCookie('r_expert', this.isExpertMode());
     }
 
     /**
