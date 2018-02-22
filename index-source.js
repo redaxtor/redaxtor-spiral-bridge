@@ -34,7 +34,7 @@ class RedaxtorBundle extends Redaxtor {
         setTimeout(() => {
             let div = document.createElement('div');
 
-            if (window.metadata['meta-save-url']) {
+            if (window.metadata && window.metadata['meta-save-url']) {
                 div.setAttribute('data-save-url', window.metadata['meta-save-url']);
                 delete window.metadata['meta-save-url'];
             }

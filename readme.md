@@ -51,7 +51,7 @@ You can skip calling `startForSpiral` method and research how this [bundle is do
 
 1. Install node
 2. Update git submodules
-3. Run `npm install` and `npm build`
+3. Run `npm install` and `npm run build`
 
 
 ### Publishing during development
