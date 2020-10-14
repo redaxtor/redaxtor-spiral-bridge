@@ -1,3 +1,5 @@
+### This project is deprecated in favor of [spiral-bridge package](https://github.com/writeaway/writeaway/tree/master/packages/spiral-bridge)
+
 ### Usage in Spiral Projects
 
 Include `writeaway.min.js` in your project. I.e. `/node_modules/writeaway-spiral-bridge/writeaway.min.js`
