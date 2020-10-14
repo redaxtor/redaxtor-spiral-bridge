@@ -42,7 +42,7 @@
     "classnames": "^2.2.3",
     "cross-env": "^1.0.7",
     "css-loader": "^0.26.1",
-    "eslint": "^2.13.1",
+    "eslint": "^7.11.0",
     "eslint-config-google": "^0.7.1",
     "eslint-plugin-react": "^4.2.3",
     "js-beautify": "^1.6.2",
