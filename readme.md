@@ -1,4 +1,4 @@
-### This project is deprecated in favor of [spiral-bridge package](https://github.com/writeaway/writeaway/tree/master/packages/spiral-bridge)
+# DEPRECATED This project is deprecated in favor of [spiral-bridge package](https://github.com/writeaway/writeaway/tree/master/packages/spiral-bridge)
 
 ### Usage in Spiral Projects
 
